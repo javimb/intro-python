@@ -1,5 +1,5 @@
 /**
- * Betabeers theme for reveal.js based on night theme
+ * Python theme for reveal.js based on night theme
  *
  * Javi Imbernon @javimb9
  */
@@ -46,7 +46,7 @@ body {
  * CONTRAST
  *********************************************/
 .contrast {
-  color: #fdd641;
+  color: #fdd641 !important;
 }
 
 /*********************************************
