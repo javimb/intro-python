@@ -97,6 +97,7 @@
                 			&nbsp;&nbsp;&nbsp;&nbsp;__init__.py <br>
                 			&nbsp;&nbsp;&nbsp;&nbsp;players.py <br>
                 			&nbsp;&nbsp;&nbsp;&nbsp;managers.py <br>
+                			&nbsp;&nbsp;&nbsp;&nbsp;trophies.py <br>
                 		</code>
                 	</section>
                 	<section>
@@ -107,12 +108,12 @@
                 		<br><br>
                 		<code>
                 			>>> from fifa import teams <br>
-                			>>> zizou = team.players.Zidane()
+                			>>> zizou = teams.players.Zidane()
                 		</code>	
                 		<br><br>
                 		<code>
-                			>>> from fifa.teams.players import * <br>
-                			>>> zizou = Zidane()
+                			>>> from fifa.teams.trophies import * <br>
+                			>>> la_decima = UefaChampionsLeague()
                 		</code>	
                 	</section>
                 	<section>
@@ -176,6 +177,275 @@
 							If the implementation is easy to explain, it may be a good idea. <br>
                 		</code>
                 	</section>
+                </section>
+
+                <section>
+                    <section>
+                        <h1>PEP-8</h1>
+                        <h3>code is <span class="contrast">read</span> much more often than it is written</h3>
+                        <a href="http://legacy.python.org/dev/peps/pep-0008/">http://legacy.python.org/dev/peps/pep-0008/</a>
+                    </section>
+            		<section>
+                        <code>
+                            >>> from __future__ import braces <br>
+                              File "< stdin >", line 1 <br>
+                            SyntaxError: not a chance <br>
+                        </code>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h1>Basic <span class="contrast">types</span></h1>
+                    </section>
+                    <section>
+                        <h2>Numbers</h2>
+                        <code>
+                            >>> type(1) <br>
+                            < type 'int' >
+                        </code>
+                        <br>
+                        <code>
+                            >>> type(10000000000000000000) <br>
+                            < type 'long' > <br>
+                            >>> type(1L) <br>
+                            < type 'long' >
+                        </code>
+                        <br>
+                        <code>
+                            >>> type(1.5) <br>
+                            < type 'float' >
+                        </code>
+                        <br>
+                        <code>
+                            >>> 3/2 <br>
+                            1 <br>
+                            >>> 3/2. <br>
+                            1.5
+                        </code>
+                    </section>
+                    <section>
+                        <h2>Bool</h2>
+                        <code>
+                            >>> type(True) <br>
+                            < type 'bool' > <br>
+                            >>> type(False) <br>
+                            < type 'bool' > <br>
+                        </code>
+                        <br>
+                        <code>
+                            >>> True == 1 <br>
+                            True <br>
+                            >>> False == 0 <br>
+                        </code>
+                        <br>
+                        <code>
+                            >>> issubclass(bool, int)
+                            True
+                        </code>
+                    </section>
+                    <section>
+                        <h2>Strings</h2>
+                        <code>
+                            >>> type('foo') <br>
+                            < type 'str' > <br>
+                            >>> type("Foo's bar") <br>
+                            < type 'str' > <br>
+                        </code>
+                        <br>
+                        <code>
+                            >>> multiline_string = """This is a <br>
+                            ... multiline string""" <br>
+                            >>> print multiline_string <br>
+                            This is a <br>
+                            multiline string
+                        </code>
+                        <br>
+                        <code>
+                            >>> print '%s is a str and %i is a int' % ('foo', 1) <br>
+                            foo is a str and 1 is a int <br>
+                            >>> '{0}{1}{0}'.format('abra', 'cad') <br>
+                            'abracadabra'
+                        </code>
+                    </section>
+                    <section>
+                        <h2>More about strings</h2>
+                        <code>
+                            >>> 'Python rocks'.find('rocks') <br>
+                            7 <br>
+                            >>> 'Python rocks'.find('PHP') <br>
+                            -1
+                        </code>
+                        <br>
+                        <code>
+                            >>> 'Python rocks'.split() <br>
+                            ['Python', 'rocks'] <br>
+                            >>> 'Python rocks'.split('o') <br>
+                            ['Pyth', 'n r', 'cks']
+                        </code>
+                        <br>
+                        <code>
+                            >>> 'Python rocks'.replace('Python', "Java doesn't") <br>
+                            "Java doesn't rocks"
+                        </code>
+                    </section>
+                    <section>
+                        <h2>Type conversion</h2>
+                        <code>
+                            >>> str(2) <br>
+                            '2'
+                        </code>
+                        <br>
+                        <code>
+                            >>> int('2') <br>
+                            2 <br>
+                            >>> int('foo') <br>
+                            Traceback (most recent call last): <br>
+                              File "< stdin >", line 1, in < module > <br>
+                            ValueError: invalid literal for int() with base 10: 'foo' <br>
+                        </code>
+                        <br>
+                        <code>
+                            >>> 2 + '2' <br>
+                            Traceback (most recent call last): <br>
+                              File "< stdin >", line 1, in < module > <br>
+                            TypeError: unsupported operand type(s) for +: 'int' and 'str' <br>
+                        </code>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h1 class="contrast">Operators</h1>
+                    </section>
+                    <section>
+                        <h2>Numeric</h2>
+                        <code>
+                            a + b &nbsp;&nbsp; a - b &nbsp;&nbsp; a * b &nbsp;&nbsp; a / b <br>
+                            a % b &nbsp;&nbsp; a ** b
+                        </code>
+                        <br>
+                        <h2>Comparators</h2>
+                        <code>
+                            a == b &nbsp;&nbsp; a != b &nbsp;&nbsp; a > b &nbsp;&nbsp; a < b <br>
+                            a >= b &nbsp;&nbsp; a <= b
+                        </code>
+                        <br>
+                        <h2>Logic</h2>
+                        <code>
+                            not a &nbsp;&nbsp; a and b &nbsp;&nbsp; a or b <br>
+                        </code>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h1>Collections</h1>
+                        <h2 class="contrast">first look</h2>
+                    </section>
+                    <section>
+                        <h2>List</h2>
+                        <code>
+                            >>> even_nums = [2, 4, 6, 8] <br>
+                            >>> even_nums[0] <br>
+                            2
+                        </code>
+                        <br>
+                        <code>
+                            >>> 6 in even_nums <br>
+                            True
+                        </code>
+                        <br>
+                        <code>
+                            >>> even_nums.append(10) <br>
+                            >>> even_nums <br>
+                            [2, 4, 6, 8, 10]
+                        </code>
+                        <br>
+                        <code>
+                            >>> other_list = [1, ['2', 3], 'foo'] <br>
+                            >>> even_nums + other_list <br>
+                            [2, 4, 6, 8, 10, 1, ['2', 3], 'foo']
+                        </code>
+                    </section>
+                    <section>
+                        <h2>Dictionary</h2>
+                        <code>
+                            >>> user = {'name': 'javimb', 'is_staf': True} <br>
+                            >>> user['name'] <br>
+                            'javimb'
+                        </code>
+                        <br>
+                        <code>
+                            >>> user['password'] <br>
+                            Traceback (most recent call last): <br>
+                              File "< stdin >", line 1, in < module > <br>
+                            KeyError: 'password' <br>
+                            >>> user.get('password') <br>
+                            >>> user.get('password', 'foobar') <br>
+                            'foobar'
+                        </code>
+                        <br>
+                        <code>
+                            >>> user['is_authenticated'] = True <br>
+                            >>> user <br>
+                            {'is_staf': True, 'is_authenticated': True, 'name': 'javimb'}
+                        </code>
+                    </section>
+                    <section>
+                        <h2>Tuple</h2>
+                        <code>
+                            >>> even_nums = (2, 4, 6, 8) <br>
+                            >>> type(even_nums)
+                            < type 'tuple' > <br>
+                        </code>
+                        <br>
+                        <code>
+                            >>> even_nums[2] <br>
+                            6 <br>
+                            >>> 8 in even_nums <br>
+                            True
+                        </code>
+                        <br>
+                        <code>
+                            >>> other_tuple = 2, 'foo', [2, True, 0] <br>
+                            >>> other_tuple <br>
+                            (2, 'foo', [2, True, 0])
+                        </code>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h1>Beginners <span class="contrast">Tricks</span></h1>
+                    </section>
+                    <section>
+                        <code>
+                            >>> x = 0 <br>
+                            >>> x += 3 <br>
+                            >>> x <br>
+                            3 <br>
+                            >>> x -= 2
+                        </code>
+                        <br>
+                        <code>
+                            >>> a = 'foo' <br>
+                            >>> b = 'bar' <br>
+                            >>> a, b = b, a <br>
+                            >>> a <br>
+                            'bar' <br>
+                            >>> b <br>
+                            'foo'
+                        </code>
+                        <br>
+                        <code>
+                            >>> a, b, c = 1, 2, 3 <br>
+                            >>> a < b and b < c <br>
+                            True <br>
+                            >>> a < b < c <br>
+                            True
+                        </code>
+                    </section>
                 </section>
             </div>
 		</div>
