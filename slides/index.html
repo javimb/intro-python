@@ -788,6 +788,39 @@
                         </code>
                     </section>
                 </section>
+
+                <section>
+                    <section>
+                        <h1>List <span class="contrast">comprehesion</span></h1>
+                    </section>
+                    <section>
+                        <code>
+                            def triple(x): <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;return x * 3 <br>
+                            <br>
+                            def is_even(x): <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;return not x % 2 <br>
+                        </code>
+                        <br>
+                        <code>
+                            >>> some_even_nums = map(triple, filter(is_even, range(10))) <br>
+                            >>> some_even_nums <br>
+                            [0, 6, 12, 18, 24]
+                        </code>
+                    </section>
+                    <section>
+                        <code>
+                            >>> some_even_nums = [x * 3 for x in range(10) if not x % 2] <br>
+                            >>> some_even_nums <br>
+                            [0, 6, 12, 18, 24]
+                        </code>
+                        <br>
+                        <code>
+                            >>> [x * 3 for x in range(10)] <br>
+                            [0, 3, 6, 9, 12, 15, 18, 21, 24, 27]
+                        </code>
+                    </section>
+                </section>
             </div>
 		</div>
 
