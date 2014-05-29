@@ -681,7 +681,112 @@
                 </section>
 
                 <section>
-                    <h1>Exercise <span class="contrast">1</span></h1>
+                    <section>
+                        <h1>Beginner <span class="contrast">exercises</span></h1>
+                    </section>
+                    <section>
+                        <h1>Exercise 1</h1>
+                        <h4>Thanks <a href="https://twitter.com/jorgebastida">@jorgebastida</a>!</h4>
+                        <a href="https://github.com/javimb/intro-python/tree/master/exercises/exercise_1">https://github.com/javimb/intro-python/tree/master/exercises/exercise_1</a>
+                    </section>
+                    <section>
+                        <h1>Exercise 2</h1>
+                        <h4>Thanks <a href="https://twitter.com/jorgebastida">@jorgebastida</a>!</h4>
+                        <a href="https://github.com/javimb/intro-python/tree/master/exercises/exercise_2">https://github.com/javimb/intro-python/tree/master/exercises/exercise_2</a>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h1 class="contrast">Classes</h1>
+                    </section>
+                    <section>
+                        <code>
+                            class Car(): <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;def __init__(self, fuel): <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.fuel = fuel <br>
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;def move(self): <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if not self.fuel: <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print 'No fuel' <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else: <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.fuel -= 1 <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print 'Fuel: %i' % self.fuel <br>
+                        </code>
+                        <br>
+                        <code>
+                            >>> car = Car(5) <br>
+                            >>> car.move() <br>
+                            Fuel: 4
+                        </code>
+                    </section>
+                    <section>
+                        <code>
+                            class Car(object): <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;@property <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;def fuel(self): <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return self._fuel <br>
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;@fuel.setter <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;def fuel(self, value): <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self._fuel = value + 5 <br>
+                            <br>
+                            ...
+                        </code>
+                        <br>
+                        <code>
+                            >>> car = Car(5) <br>
+                            >>> car.move() <br>
+                            Fuel: 4
+                        </code>
+                    </section>
+                    <section>
+                        <code>
+                            class Car(object): <br>
+                            ... <br>
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;@staticmethod <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;def kmh_to_mph(kmh): <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return kmh * 0.621371192 <br>
+                        </code>
+                        <br>
+                        <code>
+                            >>> print Car.kmh_to_mph(100) <br>
+                            62.1371192
+                        </code>
+                    </section>
+                    <section>
+                        <code>
+                            class Car(object): <br>
+                             &nbsp;&nbsp;&nbsp;&nbsp;wheels = 4 <br>
+                             &nbsp;&nbsp;&nbsp;&nbsp;axis = 2 <br>
+                            ... <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;@classmethod <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;def wheels_per_axis(cls): <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return cls.wheels / cls.axis <br>
+                        </code>
+                        <br>
+                        <code>
+                            >>> car = Car(5) <br>
+                            >>> car.wheels = 6 <br>
+                            >>> print car.wheels / car.axis <br>
+                            3 <br>
+                            >>> print car.wheels_per_axis() <br>
+                            2
+                        </code>
+                    </section>
+                    <section>
+                        <code>
+                            class Vehicle(object):<br>
+                            ... <br>
+                            <br>
+                            class FuelVehicle(object): <br>
+                            ... <br>
+                            <br>
+                            class Car(FuelVehicle, Vehicle): <br>
+                            ... <br>
+                        </code>
+                    </section>
                 </section>
             </div>
 		</div>
