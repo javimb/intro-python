@@ -863,11 +863,81 @@
                             StopIteration <br>
                         </code>
                     </section>
-
                     <section>
                         <code>
                             >>> gen = [x for x in range(1000000)] #0.1085 s <br>
                             >>> gen = (x for x in range(1000000)) #0.0219 s
+                        </code>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h1 class="contrast">Decorators</h1>
+                    </section>
+                    <section>
+                        <code>
+                            def admin_dashboard(name): <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;print "%s's admin dashboard" % name
+                        </code>
+                        <br>
+                        <code>
+                            >>> admin_dashboard('javimb') <br>
+                            javimb's admin dashboard
+                        </code>
+                        <br>
+                        <code>
+                            def admin_dashboard(name): <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;if name != 'javimb': <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print '404' <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;else: <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print "%s's admin dashboard" % name <br>
+                        </code>
+                        <br>
+                        <code>
+                            >>> admin_dashboard('Raul') <br>
+                            404
+                        </code>
+                    </section>
+                    <section>
+                        <code>
+                            def staff_required(original_func): <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;def new_func(name): <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if name != 'javimb': <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print '404' <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return original_func(name) <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;return new_func
+                        </code>
+                        <br>
+                        <code>
+                            @staff_required <br>
+                            def admin_dashboard(name): <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp; print "%s's admin dashboard" % name
+                        </code>
+                    </section>
+                    <section>
+                        <code>
+                            >>> admin_dashboard <br>
+                            < function new_func at 0x7f8bf1b6c5f0 >
+                        </code>
+                        <br>
+                        <code>
+                            from functools import wraps <br>
+                            <br>
+                            def staff_required(original_func): <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;@wraps(original_func)
+                            &nbsp;&nbsp;&nbsp;&nbsp;def new_func(name): <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if name != 'javimb': <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print '404' <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return original_func(name) <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;return new_func
+                        </code>
+                        <br>
+                        <code>
+                            >>> admin_dashboard <br>
+                            < function admin_dashboard at 0x7f1f06a427d0 >
                         </code>
                     </section>
                 </section>
