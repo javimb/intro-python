@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
+import urllib2
+
 def get_text():
-    text_file = open('trash.txt')
-    text = text_file.read()
-    text_file.close()
-    return text
+    url = 'https://raw.githubusercontent.com/javimb/intro-python/master/exercises/exercise_2/trash.txt'
+    return urllib2.urlopen(url).read()
 
 
 # EXERCISE 2
