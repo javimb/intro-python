@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
+import urllib2
+
 def get_calls():
-    calls_file = open('./calls.txt')
-    calls = calls_file.read()
-    calls_file.close()
-    return calls
+    url = 'https://raw.githubusercontent.com/javimb/intro-python/master/exercises/exercise_1/calls.txt'
+    return urllib2.urlopen(url).read()
 
 
 # EXERCISE 1
