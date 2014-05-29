@@ -941,6 +941,123 @@
                         </code>
                     </section>
                 </section>
+
+                <section>
+                    <section>
+                        <h1>Decorators</h1>
+                        <h2>the <span class="contrast">hard way</span></h2>
+                    </section>
+                    <section>
+                        <h1>Namespaces & <span class="contrast">scopes</span></h1>
+                    </section>
+                    <section>
+                        <h2>A <span class="contrast">namespace</span> is a mapping from names to objects</h2>
+                        <br>
+                        <h2 class="fragment" data-fragment-index="0">A <span class="contrast">scope</span> is the textual region where a namespace is accessible</h2>
+                    </section>
+                    <section>
+                        <code>
+                            def fibonacci(x): <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;if x < 2: <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return x <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;return fibonacci(x-1) + fibonacci(x-2) <br>
+                        </code>
+                        <br>
+                        <code>
+                            >>> fibonacci(40) # 49.80 s
+                        </code>
+                    </section>
+                    <section>
+                        <code style="border:3px solid #fff">
+                            CACHE = {} <br>
+                            <br>
+                            def fibonacci(x): <br>
+                            <div style="border:3px solid #fdd641">
+                                &nbsp;&nbsp;&nbsp;&nbsp;if x < 2: <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return x <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;value = CACHE.get(str(x)) <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;if not value: <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value = fibonacci(x-1) + fibonacci(x-2) <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CACHE[str(x)] = value <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;return value <br>
+                            </div>
+                        </code>
+                        <br>
+                        <code>
+                            >>> fibonacci(40) # 0.000169 s
+                        </code>
+                    </section>
+                    <section>
+                        <code style="border:3px solid #fff">
+                            CACHE = {} <br>
+                            <br>
+                            def fibonacci(x): <br>
+                            <div style="border:3px solid #fdd641">
+                                &nbsp;&nbsp;&nbsp;&nbsp;if x < 2: <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return x <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;return fibonacci(x-1) + fibonacci(x-2) <br>
+                            </div>
+                            <br>
+                            original_fibonacci = fibonacci <br>
+                            <br>
+                            def fibonacci(x): <br>
+                            <div style="border:3px solid #fdd641">
+                                &nbsp;&nbsp;&nbsp;&nbsp;value = CACHE.get(str(x)) <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;if not value: <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value = original_fibonacci(x) <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CACHE[str(x)] = value <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;return value <br>
+                            </div>
+                        </code>
+                    </section>
+                    <section>
+                        <code style="border:3px solid #fff">
+                            CACHE = {} <br>
+                            <br>
+                            def fibonacci(x): <br>
+                            <div style="border:3px solid #fdd641">
+                                &nbsp;&nbsp;&nbsp;&nbsp;if x < 2: <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return x <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;return fibonacci(x-1) + fibonacci(x-2) <br>
+                            </div>
+                            <br>
+                            def cache(func): <br>
+                            <div style="border:3px solid #fdd641">
+                                &nbsp;&nbsp;&nbsp;&nbsp;def cached_func(x): <br>
+                                <div style="border:3px solid #4c8abd">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value = CACHE.get(str(x)) <br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if not value: <br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value = func(x) <br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CACHE[str(x)] = value <br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return value <br>
+                                </div>
+                                &nbsp;&nbsp;&nbsp;&nbsp;return cached_func <br>
+                            </div>
+                            <br>
+                            fibonacci = cache(fibonacci)
+                        </code>
+                    </section>
+                    <section>
+                        <code>
+                            CACHE = {} <br>
+                            <br>
+                            def cache(func): <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;def cached_func(x): <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value = CACHE.get(str(x)) <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if not value: <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value = func(x) <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CACHE[str(x)] = value <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return value <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;return cached_func <br>
+                            <br>
+                            @cache<br>
+                            def fibonacci(x): <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;if x < 2: <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return x <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;return fibonacci(x-1) + fibonacci(x-2) <br>
+                        </code>
+                    </section>
+                </section>
             </div>
 		</div>
 
