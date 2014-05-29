@@ -830,6 +830,46 @@
                         <h1>Exercise 3</h1>
                         <a href="https://github.com/javimb/intro-python/tree/master/exercises/exercise_3">https://github.com/javimb/intro-python/tree/master/exercises/exercise_3</a>
                     </section>
+                    <section>
+                        <h1>Exercise 4</h1>
+                        <a href="https://github.com/javimb/intro-python/tree/master/exercises/exercise_4">https://github.com/javimb/intro-python/tree/master/exercises/exercise_4</a>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h1 class="contrast">Generators</h1>
+                    </section>
+                    <section>
+                        <code>
+                            def first_generator(limit): <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;i = 0 <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;while i < limit: <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yield i <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i += 1
+                        </code>
+                        <br>
+                        <code>
+                            >>> gen = first_generator(3) <br>
+                            >>> gen.next() <br>
+                            0 <br>
+                            >>> gen.next() <br>
+                            1 <br>
+                            >>> gen.next() <br>
+                            2 <br>
+                            >>> gen.next() <br>
+                            Traceback (most recent call last): <br>
+                              File "< stdin >", line 1, in < module > <br>
+                            StopIteration <br>
+                        </code>
+                    </section>
+
+                    <section>
+                        <code>
+                            >>> gen = [x for x in range(1000000)] #0.1085 s <br>
+                            >>> gen = (x for x in range(1000000)) #0.0219 s
+                        </code>
+                    </section>
                 </section>
             </div>
 		</div>
