@@ -606,6 +606,60 @@
                         </code>
                     </section>
                 </section>
+
+                <section>
+                    <section>
+                        <h1 class="contrast">Functions</h1>
+                    </section>
+                    <section>
+                        <code>
+                            >>> def first_function(a, b): <br>
+                            ... &nbsp;&nbsp;&nbsp;&nbsp; return a + b <br>
+                            ... <br>
+                        </code>
+                        <br>
+                        <code>
+                            >>> def second_function(x, y): <br>
+                            ... &nbsp;&nbsp;&nbsp;&nbsp; return x ** 2, y ** 2 <br>
+                            ... <br>
+                            >>> a, b = second_function(2, 4)
+                        </code>
+                        <br>
+                        <code>
+                            >>> def third_function(x=0, y=2): <br>
+                            ... &nbsp;&nbsp;&nbsp;&nbsp; return x ** 2, y ** 2 <br>
+                            ... <br>
+                            >>> third_function() <br>
+                            (0, 4)
+                        </code>
+                        <br>
+                        <code>
+                            >>> second_function(x=4, y=4) <br>
+                            (16, 16)
+                        </code>
+                    </section>
+                    <section>
+                        <code>
+                            >>> def sample_funtion(*args, **kwargs): <br>
+                            ... &nbsp;&nbsp;&nbsp;&nbsp; return args[0] * kwargs.get('mul', 0) <br>
+                            ... <br>
+                            >>> sample_function(1) <br>
+                            0 <br>
+                            >>> sample_function(2, mul=5) <br>
+                            10
+                        </code>
+                        <br>
+                        <code>
+                            >>> def last_function(x, *args): <br>
+                            ... &nbsp;&nbsp;&nbsp;&nbsp; return None <br>
+                            ... <br>
+                            >>> last_function() <br>
+                            Traceback (most recent call last): <br>
+                              File "< stdin >", line 1, in < module > <br>
+                            TypeError: last_function() takes at least 1 argument (0 given) <br>
+                        </code>
+                    </section>
+                </section>
             </div>
 		</div>
 
